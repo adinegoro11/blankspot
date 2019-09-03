@@ -11,7 +11,7 @@
     <link rel="icon" href="../../favicon.ico">
     <link rel="canonical" href="<?= base_url()?>assets/css/starter-template/">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Sistem Inventory</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,10 @@
 
     <!-- Custom styles for this template -->
     <link href="<?= base_url()?>assets/css/starter-template.css" rel="stylesheet">
+
+    <script src="<?= base_url()?>assets/js/jquery.min.js"></script>
+    <script src="<?= base_url()?>assets/js/dataTables.min.js"></script>
+    <script src="<?= base_url()?>assets/js/dataTables.bootstrap.min.js"></script>
 
   </head>
 
@@ -39,24 +43,38 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#about">Barang</a></li>
+            <li><a href="<?=base_url()?>supplier/index">Supplier</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
+    
+      <div class="row">
+        <div class="col-md-12"> <br><br>
+        <?php $this->load->view($isi); ?>
+        </div>
+      </div>
 
-      <div class="starter-template">
+
+      <!-- <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+        <div class="col-md-12"> <br> <br>
+          <div class="panel panel-default">
+            <div class="panel-heading"> <h3 class="panel-title">Panel title</h3> </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>
+        </div>
+      </div> -->
 
     </div><!-- /.container -->
 
-    <script src="<?= base_url()?>assets/js/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?= base_url()?>assets/js/jquery.min.js"><\/script>')</script>
     <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

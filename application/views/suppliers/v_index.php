@@ -1,45 +1,33 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Data User</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Data Supplier</h3> </div>
     <div class="panel-body">
+        <a class="btn btn-success" href="<?= base_url()?>supplier/create" role="button">Tambah</a>
+        <hr>
         <table class="table table-striped" id="data">
             <thead>
-              <tr>
-                <th>Nama Lengkap</th>
-                <th>Username</th>
-                <th>NIK</th>
-                <th>Level</th>
-                <th>Alamat</th>
-              </tr>
-            </thead>
-            
-            <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th>Nama Supplier</th>
+                    <th>Alamat</th>
                 </tr>
-            </tbody>
-
+            </thead>
             <tfoot>
                 <tr>
-                    <th>Nama Lengkap</th>
-                    <th>Username</th>
-                    <th>NIK</th>
-                    <th>Level</th>
+                    <th>Nama Supplier</th>
                     <th>Alamat</th>
                 </tr>
             </tfoot>
+            <tbody>
+                <?php foreach ($query as $s): ?>    
+                <tr>
+                    <td><?=$s->nama?></td>
+                    <td><?=$s->alamat?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
 
           </table>
     </div>
 </div>
-
-<!-- <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script> -->
 
 <script type="text/javascript">
 	$(document).ready(function(){
