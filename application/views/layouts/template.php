@@ -22,6 +22,11 @@
     <!-- Custom styles for this template -->
     <link href="<?= base_url()?>assets/css/starter-template.css" rel="stylesheet">
 
+    <!-- Select2 -->
+    <link href="<?= base_url()?>assets/css/select2.min.css" rel="stylesheet">
+    <script src="<?= base_url()?>assets/js/select2.min.js"></script>
+
+    <!-- Datatables -->
     <script src="<?= base_url()?>assets/js/jquery.min.js"></script>
     <script src="<?= base_url()?>assets/js/dataTables.min.js"></script>
     <script src="<?= base_url()?>assets/js/dataTables.bootstrap.min.js"></script>
@@ -41,11 +46,18 @@
           </button>
           <a class="navbar-brand" href="#">Project name</a>
         </div>
+        
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Beranda</a></li>
-            <li><a href="#about">Barang</a></li>
             <li><a href="<?=base_url()?>supplier/index">Supplier</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Barang <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<?=base_url()?>incoming_purchase/index">Barang Masuk</a></li>
+                <li><a href="<?=base_url()?>incoming_purchase/index">Barang Keluar</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

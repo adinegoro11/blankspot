@@ -1,28 +1,36 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Data Barang</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Barang Masuk</h3> </div>
     <div class="panel-body">
-        <a class="btn btn-success" href="<?= base_url()?>product/create" role="button">Tambah</a>
+        <a class="btn btn-success" href="<?= base_url()?>incoming_purchase/create" role="button">Tambah</a>
         <hr>
         <table class="table table-striped" id="data">
             <thead>
                 <tr>
+                    <th>Supplier</th>
                     <th>Nama Barang</th>
-                    <th>Kode</th>
-                    <th>Stok Awal</th>
-                    <th>Stok Masuk</th>
+                    <th>Qty</th>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Nama Supplier</th>
-                    <th>Alamat</th>
+                    <th>Supplier</th>
+                    <th>Nama Barang</th>
+                    <th>Qty</th>
+                    <th>Tanggal</th>
+                    <th></th>
                 </tr>
             </tfoot>
             <tbody>
                 <?php foreach ($query as $s): ?>    
                 <tr>
-                    <td><?=$s->nama?></td>
-                    <td><?=$s->alamat?></td>
+                    <td><?=$s->supplier?></td>
+                    <td><?=$s->barang?></td>
+                    <td><?=$s->jumlah?></td>
+                    <td><?=date('d F Y', strtotime($s->tanggal))?></td>
+                    <td><a class="btn btn-default" href="<?=base_url().'incoming_purchase/edit/'.$s->id?>" role="button">Ubah</a></td>
+                    <td><a class="btn btn-warning" href="<?=base_url().'incoming_purchase/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
