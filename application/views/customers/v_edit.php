@@ -2,12 +2,12 @@
     <div class="panel-heading"> <h3 class="panel-title">Edit Data</h3> </div>
     <div class="panel-body">
     
-        <form class="form-horizontal" action="<?= base_url().'supplier/edit/'.$id?>" method="post">
+        <form class="form-horizontal" action="<?= base_url().'customer/edit/'.$id?>" method="post">
 
             <div class="form-group">
                 <label for="nama" class="col-sm-2 control-label">Nama</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="nama" value="<?=$query->nama?>" required="required" placeholder="Nama supplier" autocomplete="off">
+                    <input type="text" class="form-control" name="nama" value="<?=$query->nama?>" required="required" placeholder="Nama customer" autocomplete="off">
                 </div>
             </div>
 

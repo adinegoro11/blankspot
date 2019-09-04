@@ -1,15 +1,22 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Tambah Barang Masuk</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Tambah Barang Keluar</h3> </div>
     <div class="panel-body">
     
-        <form class="form-horizontal" action="<?= base_url()?>incoming_purchase/create" method="post">
-            
+        <form class="form-horizontal" action="<?= base_url()?>outgoing_purchase/create" method="post">
+
+            <div class="form-group">
+                <label for="judul" class="col-sm-2 control-label">Judul</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="judul" required="required" placeholder="Judul" autocomplete="off">
+                </div> <?=form_error('judul')?>
+            </div>
+
             <div class="form-group">
                 <label for="product_id" class="col-sm-2 control-label">Barang</label>
                 <div class="col-sm-5">
                     <select class="form-control js-example-basic-single" name="product_id" required="required">
                         <option value="">-- Pilih Barang --</option>
-                        <?php foreach ($products as $s): ?>    
+                        <?php foreach ($dropdown_product as $s): ?>    
                             <option value="<?=$s->id?>"><?=$s->nama?></option>
                         <?php endforeach; ?>
                     </select>
@@ -17,15 +24,15 @@
             </div>
 
             <div class="form-group">
-                <label for="supplier_id" class="col-sm-2 control-label">Supplier</label>
+                <label for="customer_id" class="col-sm-2 control-label">Customer</label>
                 <div class="col-sm-5">
-                    <select class="form-control js-example-basic-single" name="supplier_id" required="required">
-                        <option value="">-- Pilih Supplier --</option>
-                        <?php foreach ($suppliers as $s): ?>    
+                    <select class="form-control js-example-basic-single" name="customer_id" required="required">
+                        <option value="">-- Pilih Customer --</option>
+                        <?php foreach ($dropdown_customer as $s): ?>    
                             <option value="<?=$s->id?>"><?=$s->nama?></option>
                         <?php endforeach; ?>
                     </select>
-                </div> <?=form_error('supplier_id')?>
+                </div> <?=form_error('customer_id')?>
             </div>
 
             <div class="form-group">
@@ -36,7 +43,7 @@
             </div>
 
             <div class="form-group">
-                <label for="tanggal" class="col-sm-2 control-label">Tanggal Masuk</label>
+                <label for="tanggal" class="col-sm-2 control-label">Tanggal Keluar</label>
                 <div class="col-sm-5">
                     <input type="date" class="form-control" name="tanggal" required="required" placeholder="Tanggal Masuk" autocomplete="off">
                 </div> <?=form_error('tanggal')?>

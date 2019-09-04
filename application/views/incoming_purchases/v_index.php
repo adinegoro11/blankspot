@@ -29,8 +29,10 @@
                     <td><?=$s->barang?></td>
                     <td><?=$s->jumlah?></td>
                     <td><?=date('d F Y', strtotime($s->tanggal))?></td>
-                    <td><a class="btn btn-default" href="<?=base_url().'incoming_purchase/edit/'.$s->id?>" role="button">Ubah</a></td>
-                    <td><a class="btn btn-warning" href="<?=base_url().'incoming_purchase/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a></td>
+                    <td>
+                        <a class="btn btn-default" href="<?=base_url().'incoming_purchase/edit/'.$s->id?>" role="button">Ubah</a>    
+                        <a class="btn btn-warning" href="<?=base_url().'incoming_purchase/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

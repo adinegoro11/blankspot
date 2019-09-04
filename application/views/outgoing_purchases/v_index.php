@@ -1,30 +1,40 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Data Supplier</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Barang Keluar</h3> </div>
     <div class="panel-body">
-        <a class="btn btn-success" href="<?= base_url()?>supplier/create" role="button">Tambah</a>
+        <a class="btn btn-success" href="<?= base_url()?>outgoing_purchase/create" role="button">Tambah</a>
         <hr>
         <table class="table table-striped" id="data">
             <thead>
                 <tr>
-                    <th>Nama Supplier</th>
-                    <th>Alamat</th>
+                    <th>Judul</th>
+                    <th>Nama Barang</th>
+                    <th>Nama Customer</th>
+                    <th>Qty</th>
+                    <th>Tanggal</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Nama Supplier</th>
-                    <th>Alamat</th>
+                    <th>Judul</th>
+                    <th>Nama Barang</th>
+                    <th>Nama Customer</th>
+                    <th>Qty</th>
+                    <th>Tanggal</th>
                     <th></th>
                 </tr>
             </tfoot>
             <tbody>
                 <?php foreach ($query as $s): ?>    
                 <tr>
-                    <td><?=$s->nama?></td>
-                    <td><?=$s->alamat?></td>
+                    <td><?=$s->judul?></td>
+                    <td><?=$s->barang?></td>
+                    <td><?=$s->customer?></td>
+                    <td><?=$s->jumlah?></td>
+                    <td><?=date('d F Y', strtotime($s->tanggal))?></td>
                     <td>
-                        <a class="btn btn-default" href="<?=base_url().'supplier/edit/'.$s->id?>" role="button">Ubah</a>
+                        <a class="btn btn-default" href="<?=base_url().'outgoing_purchase/edit/'.$s->id?>" role="button">Ubah</a>
+                        <a class="btn btn-warning" href="<?=base_url().'outgoing_purchase/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

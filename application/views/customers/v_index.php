@@ -1,19 +1,19 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Data Supplier</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Data Customer</h3> </div>
     <div class="panel-body">
-        <a class="btn btn-success" href="<?= base_url()?>supplier/create" role="button">Tambah</a>
+        <a class="btn btn-success" href="<?= base_url()?>customer/create" role="button">Tambah</a>
         <hr>
         <table class="table table-striped" id="data">
             <thead>
                 <tr>
-                    <th>Nama Supplier</th>
+                    <th>Nama Customer</th>
                     <th>Alamat</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Nama Supplier</th>
+                    <th>Nama Customer</th>
                     <th>Alamat</th>
                     <th></th>
                 </tr>
@@ -24,7 +24,7 @@
                     <td><?=$s->nama?></td>
                     <td><?=$s->alamat?></td>
                     <td>
-                        <a class="btn btn-default" href="<?=base_url().'supplier/edit/'.$s->id?>" role="button">Ubah</a>
+                        <a class="btn btn-default" href="<?=base_url().'customer/edit/'.$s->id?>" role="button">Ubah</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

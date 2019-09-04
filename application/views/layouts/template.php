@@ -44,26 +44,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">PT. GSD</a>
         </div>
         
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Beranda</a></li>
             <li><a href="<?=base_url()?>supplier/index">Supplier</a></li>
+            <li><a href="<?=base_url()?>customer/index">Customer</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Barang <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Info Barang <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>incoming_purchase/index">Barang Masuk</a></li>
-                <li><a href="<?=base_url()?>incoming_purchase/index">Barang Keluar</a></li>
+                <li><a href="<?=base_url()?>outgoing_purchase/index">Barang Keluar</a></li>
               </ul>
             </li>
+            <li><a href="<?=base_url()?>login/logout" onclick="return confirm('Yakin keluar aplikasi?')">Keluar</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
     
       <div class="row">
         <div class="col-md-12"> <br><br>

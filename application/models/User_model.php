@@ -9,13 +9,11 @@ class User_model extends CI_Model
         return $query->result();
     }
 
-    public function insert_entry()
+    public function find($data)
     {
-        $this->title    = $_POST['title']; // please read the below note
-        $this->content  = $_POST['content'];
-        $this->date     = time();
-
-        $this->db->insert('entries', $this);
+        $this->db->where($data);
+        $query = $this->db->get($this->table);
+        return $query->row();
     }
 
     public function update_entry()

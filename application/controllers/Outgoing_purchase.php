@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Incoming_purchase extends CI_Controller
+class Outgoing_purchase extends CI_Controller
 {
     public function __construct()
     {
@@ -14,26 +14,27 @@ class Incoming_purchase extends CI_Controller
 
     public function index()
     {
-        $data['isi'] = 'incoming_purchases/v_index';
-        $data['query'] = $this->incoming_purchase_model->get();
+        $data['isi'] = 'outgoing_purchases/v_index';
+        $data['query'] = $this->outgoing_purchase_model->get();
         $this->load->view('layouts/template', $data);
     }
     
     public function create()
     {
         $this->form_validation->set_rules('product_id', 'Barang', 'required');
-        $this->form_validation->set_rules('supplier_id', 'Supplier', 'required');
+        $this->form_validation->set_rules('customer_id', 'Customer', 'required');
         $this->form_validation->set_rules('jumlah', 'Qty', 'required|integer');
-        $this->form_validation->set_rules('tanggal', 'Tanggal Masuk', 'required');
+        $this->form_validation->set_rules('tanggal', 'Tanggal Keluar', 'required');
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
         if ($this->form_validation->run() == false) {
-            $data['products'] = $this->product_model->get();
-            $data['suppliers'] = $this->supplier_model->get();
-            $data['isi'] = 'incoming_purchases/v_create';
+            $data['dropdown_product'] = $this->product_model->get();
+            $data['dropdown_customer'] = $this->customer_model->get();
+            $data['isi'] = 'outgoing_purchases/v_create';
             $this->load->view('layouts/template', $data);
         } else {
             $data = $this->input->post();
-            $this->incoming_purchase_model->insert($data);
-            redirect('/incoming_purchase/index/');
+            $this->outgoing_purchase_model->insert($data);
+            redirect('/outgoing_purchase/index/');
         }
     }
 
@@ -48,15 +49,15 @@ class Incoming_purchase extends CI_Controller
             if (empty($id)) {
                 $id = $this->input->post('id');
             }
-            $data['query'] = $this->incoming_purchase_model->detail($id);
+            $data['query'] = $this->outgoing_purchase_model->detail($id);
             $data['dropdown_product'] = $this->product_model->get();
             $data['dropdown_supplier'] = $this->supplier_model->get();
             $data['id'] = $id;
-            $data['isi'] = 'incoming_purchases/v_edit';
+            $data['isi'] = 'outgoing_purchases/v_edit';
             $this->load->view('layouts/template', $data);
         } else {
             $input = $this->input->post();
-            $this->incoming_purchase_model->update($input, $id);
+            $this->outgoing_purchase_model->update($input, $id);
             redirect('incoming_purchase/index', 'refresh');
         }
     }
@@ -66,7 +67,7 @@ class Incoming_purchase extends CI_Controller
         if (empty($id)) {
             redirect('incoming_purchase/index', 'refresh');
         } else {
-            $this->incoming_purchase_model->delete($id);
+            $this->outgoing_purchase_model->delete($id);
             redirect('incoming_purchase/index', 'refresh');
         }
     }

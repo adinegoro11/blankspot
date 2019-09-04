@@ -1,7 +1,7 @@
 <?php
-class Supplier_model extends CI_Model
+class Customer_model extends CI_Model
 {
-    private $table = 'suppliers';
+    private $table = 'customers';
 
     public function get()
     {

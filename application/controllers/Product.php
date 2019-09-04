@@ -6,6 +6,9 @@ class Product extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if (empty($this->session->userdata('level'))) {
+            redirect('/login/index/', 'refresh');
+        }
         date_default_timezone_set('Asia/Jakarta');
     }
 
