@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2019 at 05:06 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.2.16
+-- Generation Time: Sep 05, 2019 at 07:32 PM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,8 +32,9 @@ CREATE TABLE `barang_keluar` (
   `id` int(11) NOT NULL,
   `judul` varchar(100) DEFAULT NULL,
   `product_id` int(5) DEFAULT NULL,
-  `customer_id` int(5) DEFAULT NULL,
+  `user_id` int(5) DEFAULT NULL,
   `jumlah` int(10) DEFAULT NULL,
+  `keperluan` varchar(100) DEFAULT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,11 +42,12 @@ CREATE TABLE `barang_keluar` (
 -- Dumping data for table `barang_keluar`
 --
 
-INSERT INTO `barang_keluar` (`id`, `judul`, `product_id`, `customer_id`, `jumlah`, `tanggal`) VALUES
-(1, 'barang keluar sore', 1, 3, 40, '2019-09-02'),
-(2, 'keperluan inventory', 1, 2, 10, '2019-09-02'),
-(3, 'tang untuk gudang', 1, 2, 10, '2019-09-03'),
-(4, 'barang keluar #2', 1, 1, 10, '2019-09-01');
+INSERT INTO `barang_keluar` (`id`, `judul`, `product_id`, `user_id`, `jumlah`, `keperluan`, `tanggal`) VALUES
+(1, 'barang keluar sore', 1, 3, 40, NULL, '2019-09-02'),
+(2, 'keperluan inventory', 1, 2, 10, NULL, '2019-09-02'),
+(3, 'tang untuk gudang', 1, 2, 10, NULL, '2019-09-03'),
+(4, 'barang keluar #2', 4, 1, 10, 'External', '2019-09-04'),
+(5, 'satu', 2, 1, 12, 'Internal', '2019-09-04');
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,7 @@ INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -119,9 +121,9 @@ INSERT INTO `customers` (`id`, `nama`, `alamat`) VALUES
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `kode` varchar(100) DEFAULT NULL,
+  `jenis` varchar(100) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `stok_awal` int(5) DEFAULT NULL,
+  `stok_sekarang` int(5) DEFAULT NULL,
   `stok_masuk` int(5) DEFAULT NULL,
   `stok_minimal` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -130,9 +132,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `kode`, `nama`, `stok_awal`, `stok_masuk`, `stok_minimal`) VALUES
+INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_sekarang`, `stok_masuk`, `stok_minimal`) VALUES
 (1, 'TG001', 'Tang jepit', 10, 5, 10),
-(2, 'TG002', 'Tang potong', 40, 20, 10);
+(2, 'TG002', 'Tang potong', 40, 20, 10),
+(4, 'chemical', 'Pembersih lantai', NULL, NULL, 100);
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ INSERT INTO `products` (`id`, `kode`, `nama`, `stok_awal`, `stok_masuk`, `stok_m
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -168,17 +171,16 @@ CREATE TABLE `users` (
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `nik` varchar(100) DEFAULT NULL,
-  `level` varchar(100) DEFAULT NULL,
-  `alamat` text
+  `level` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama_lengkap`, `username`, `password`, `nik`, `level`, `alamat`) VALUES
-(1, 'Rudi Ismanto', 'petugas', 'afb91ef692fd08c445e8cb1bab2ccf9c', '1001', 'user', 'Gudang'),
-(2, 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2001', 'admin', 'Bogor');
+INSERT INTO `users` (`id`, `nama_lengkap`, `username`, `password`, `nik`, `level`) VALUES
+(1, 'Rudi Ismanto', 'petugas', 'afb91ef692fd08c445e8cb1bab2ccf9c', '1001', 'user'),
+(2, 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2001', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -234,7 +236,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk`
@@ -258,7 +260,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
