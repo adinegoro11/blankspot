@@ -5,9 +5,9 @@ class Outgoing_purchase_model extends CI_Model
 
     public function get()
     {
-        $this->db->select('(barang_keluar.id)AS id, (c.nama) AS customer, (p.nama) AS barang, jumlah, tanggal, judul');
+        $this->db->select('(barang_keluar.id)AS id, nama_lengkap, (p.nama) AS barang, jumlah, tanggal, judul, keperluan');
         $this->db->from($this->table);
-        $this->db->join('customers c', 'c.id = barang_keluar.customer_id');
+        $this->db->join('users u', 'u.id = barang_keluar.user_id');
         $this->db->join('products p', 'p.id = barang_keluar.product_id');
         $query = $this->db->get();
         return $query->result();

@@ -8,8 +8,9 @@
                 <tr>
                     <th>Judul</th>
                     <th>Nama Barang</th>
-                    <th>Nama Customer</th>
+                    <th>Nama Pengambil</th>
                     <th>Qty</th>
+                    <th>Keperluan</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
                 </tr>
@@ -18,8 +19,9 @@
                 <tr>
                     <th>Judul</th>
                     <th>Nama Barang</th>
-                    <th>Nama Customer</th>
+                    <th>Nama Pengambil</th>
                     <th>Qty</th>
+                    <th>Keperluan</th>
                     <th>Tanggal</th>
                     <th></th>
                 </tr>
@@ -29,8 +31,9 @@
                 <tr>
                     <td><?=$s->judul?></td>
                     <td><?=$s->barang?></td>
-                    <td><?=$s->customer?></td>
+                    <td><?=$s->nama_lengkap?></td>
                     <td><?=$s->jumlah?></td>
+                    <td><?=$s->keperluan?></td>
                     <td><?=date('d F Y', strtotime($s->tanggal))?></td>
                     <td>
                         <a class="btn btn-default" href="<?=base_url().'outgoing_purchase/edit/'.$s->id?>" role="button">Ubah</a>

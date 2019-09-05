@@ -1,13 +1,13 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Tambah Barang Keluar</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Ubah Barang Masuk</h3> </div>
     <div class="panel-body">
     
-        <form class="form-horizontal" action="<?= base_url()?>outgoing_purchase/create" method="post">
-
+        <form class="form-horizontal" action="<?= base_url().'outgoing_purchase/edit/'.$id?>" method="post">
+            
             <div class="form-group">
                 <label for="judul" class="col-sm-2 control-label">Judul</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="judul" required="required" placeholder="Judul" autocomplete="off">
+                    <input type="text" class="form-control" name="judul" value="<?=$query->judul?>" required="required" placeholder="Judul" autocomplete="off">
                 </div> <?=form_error('judul')?>
             </div>
 
@@ -27,7 +27,7 @@
                 <label for="user_id" class="col-sm-2 control-label">Pengambil</label>
                 <div class="col-sm-5">
                     <select class="form-control js-example-basic-single" name="user_id" required="required">
-                        <option value="">-- Pilih Customer --</option>
+                        <option value="">-- Pilih Pengambil --</option>
                         <?php foreach ($dropdown_user as $s): ?>    
                             <option value="<?=$s->id?>"><?=$s->nama_lengkap?></option>
                         <?php endforeach; ?>
@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label for="jumlah" class="col-sm-2 control-label">Qty</label>
                 <div class="col-sm-5">
-                    <input type="number" class="form-control" name="jumlah" required="required" placeholder="Qty" autocomplete="off">
+                    <input type="number" class="form-control" name="jumlah" value="<?=$query->jumlah?>" required="required" placeholder="Qty" autocomplete="off">
                 </div> <?=form_error('jumlah')?>
             </div>
 
@@ -72,10 +72,3 @@
 
     </div>
 </div>
-
-<script type="text/javascript">
-	// In your Javascript (external .js resource or <script> tag)
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
-    });
-</script>

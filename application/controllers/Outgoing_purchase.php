@@ -22,19 +22,20 @@ class Outgoing_purchase extends CI_Controller
     public function create()
     {
         $this->form_validation->set_rules('product_id', 'Barang', 'required');
-        $this->form_validation->set_rules('customer_id', 'Customer', 'required');
+        $this->form_validation->set_rules('user_id', 'Pengambil', 'required');
         $this->form_validation->set_rules('jumlah', 'Qty', 'required|integer');
         $this->form_validation->set_rules('tanggal', 'Tanggal Keluar', 'required');
         $this->form_validation->set_rules('judul', 'Judul', 'required');
+        $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
         if ($this->form_validation->run() == false) {
             $data['dropdown_product'] = $this->product_model->get();
-            $data['dropdown_customer'] = $this->customer_model->get();
+            $data['dropdown_user'] = $this->user_model->get();
             $data['isi'] = 'outgoing_purchases/v_create';
             $this->load->view('layouts/template', $data);
         } else {
             $data = $this->input->post();
             $this->outgoing_purchase_model->insert($data);
-            redirect('/outgoing_purchase/index/');
+            redirect('/outgoing_purchase/index/', 'refresh');
         }
     }
 
@@ -42,33 +43,33 @@ class Outgoing_purchase extends CI_Controller
     {
         $id = $this->uri->segment(3);
         $this->form_validation->set_rules('product_id', 'Barang', 'required');
-        $this->form_validation->set_rules('supplier_id', 'Supplier', 'required');
+        $this->form_validation->set_rules('user_id', 'Pengambil', 'required');
         $this->form_validation->set_rules('jumlah', 'Qty', 'required|integer');
-        $this->form_validation->set_rules('tanggal', 'Tanggal Masuk', 'required');
+        $this->form_validation->set_rules('tanggal', 'Tanggal Keluar', 'required');
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
+        $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
         if ($this->form_validation->run() == false) {
             if (empty($id)) {
                 $id = $this->input->post('id');
             }
             $data['query'] = $this->outgoing_purchase_model->detail($id);
             $data['dropdown_product'] = $this->product_model->get();
-            $data['dropdown_supplier'] = $this->supplier_model->get();
+            $data['dropdown_user'] = $this->user_model->get();
             $data['id'] = $id;
             $data['isi'] = 'outgoing_purchases/v_edit';
             $this->load->view('layouts/template', $data);
         } else {
             $input = $this->input->post();
             $this->outgoing_purchase_model->update($input, $id);
-            redirect('incoming_purchase/index', 'refresh');
+            redirect('outgoing_purchase/index', 'refresh');
         }
     }
 
     public function delete($id=null)
     {
-        if (empty($id)) {
-            redirect('incoming_purchase/index', 'refresh');
-        } else {
+        if (isset($id)) {
             $this->outgoing_purchase_model->delete($id);
-            redirect('incoming_purchase/index', 'refresh');
         }
+        redirect('outgoing_purchase/index', 'refresh');
     }
 }

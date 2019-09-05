@@ -31,7 +31,6 @@
                     <td><?=$s->stok_minimal?></td>
                     <td>
                         <a class="btn btn-default" href="<?=base_url().'product/edit/'.$s->id?>" role="button">Ubah</a>
-                        <!-- <a class="btn btn-warning" href="<?=base_url().'product/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a> -->
                     </td>
                 </tr>
                 <?php endforeach; ?>

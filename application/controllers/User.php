@@ -6,13 +6,16 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if (empty($this->session->userdata('level'))) {
+            redirect('/login/index/', 'refresh');
+        }
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function index()
     {
-        $users = $this->user_model->get();
         $data['isi'] = 'users/index';
-        $data['query'] = $users;
+        $data['query'] = $this->user_model->get();
         $this->load->view('layouts/template', $data);
     }
     

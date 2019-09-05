@@ -32,7 +32,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a class="btn btn-default" href="<?=base_url().'product/index'?>" role="button">Batal</a>
                 </div>
             </div>
         </form>
