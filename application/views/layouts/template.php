@@ -50,7 +50,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Beranda</a></li>
-            <li><a href="<?=base_url()?>supplier/index">Supplier</a></li>
+            <li><a href="<?=base_url()?>product/index">Barang</a></li>
             <li><a href="<?=base_url()?>customer/index">Customer</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Info Barang <span class="caret"></span></a>
@@ -72,20 +72,6 @@
         <?php $this->load->view($isi); ?>
         </div>
       </div>
-
-
-      <!-- <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        <div class="col-md-12"> <br> <br>
-          <div class="panel panel-default">
-            <div class="panel-heading"> <h3 class="panel-title">Panel title</h3> </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div>
-      </div> -->
 
     </div><!-- /.container -->
 

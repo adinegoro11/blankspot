@@ -18,4 +18,15 @@ class Product_model extends CI_Model
     {
         $this->db->update($this->table, $data, array('id' => $id));
     }
+
+    public function detail($id = null)
+    {
+        $query = $this->db->get_where($this->table, array('id' => $id));
+        return $query->row();
+    }
+
+    public function delete($id = null)
+    {
+        $this->db->delete($this->table, array('id' => $id));
+    }
 }

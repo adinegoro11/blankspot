@@ -24,4 +24,9 @@ class Supplier_model extends CI_Model
         $query = $this->db->get_where($this->table, array('id' => $id));
         return $query->row();
     }
+
+    public function delete($id = null)
+    {
+        $this->db->delete($this->table, array('id' => $id));
+    }
 }

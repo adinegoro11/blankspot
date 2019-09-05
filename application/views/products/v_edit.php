@@ -1,14 +1,14 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Tambah Barang</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Ubah Barang</h3> </div>
     <div class="panel-body">
     
-        <form class="form-horizontal" action="<?= base_url()?>product/create" method="post">
-
+        <form class="form-horizontal" action="<?= base_url().'product/edit/'.$id?>" method="post">
+            
             <div class="form-group">
                 <label for="nama" class="col-sm-2 control-label">Nama Barang</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="nama" required="required" placeholder="Nama Barang" autocomplete="off">
-                </div> <?=form_error('nama')?>
+                    <input type="text" class="form-control" name="nama" value="<?=$query->nama?>" required="required" placeholder="Nama Barang" autocomplete="off">
+                </div> <?=form_error('supplier_id')?>
             </div>
 
             <div class="form-group">
@@ -26,15 +26,17 @@
             <div class="form-group">
                 <label for="stok_minimal" class="col-sm-2 control-label">Stok Minimal</label>
                 <div class="col-sm-5">
-                    <input type="number" class="form-control" name="stok_minimal" required="required" placeholder="Stok Minimal" autocomplete="off">
+                    <input type="number" class="form-control" name="stok_minimal" value="<?=$query->stok_minimal?>" required="required" placeholder="Stok Minimal" autocomplete="off">
                 </div> <?=form_error('stok_minimal')?>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a class="btn btn-default" href="<?=base_url().'incoming_purchase/index'?>" role="button">Batal</a>
                 </div>
             </div>
+
         </form>
 
     </div>

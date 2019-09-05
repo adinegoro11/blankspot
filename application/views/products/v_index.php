@@ -7,22 +7,32 @@
             <thead>
                 <tr>
                     <th>Nama Barang</th>
-                    <th>Kode</th>
-                    <th>Stok Awal</th>
-                    <th>Stok Masuk</th>
+                    <th>Jenis</th>
+                    <th>Stok Saat Ini</th>
+                    <th>Stok Minimal</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Nama Supplier</th>
-                    <th>Alamat</th>
+                    <th>Nama Barang</th>
+                    <th>Jenis</th>
+                    <th>Stok Saat Ini</th>
+                    <th>Stok Minimal</th>
+                    <th></th>
                 </tr>
             </tfoot>
             <tbody>
                 <?php foreach ($query as $s): ?>    
                 <tr>
                     <td><?=$s->nama?></td>
-                    <td><?=$s->alamat?></td>
+                    <td><?=$s->jenis?></td>
+                    <td>?</td>
+                    <td><?=$s->stok_minimal?></td>
+                    <td>
+                        <a class="btn btn-default" href="<?=base_url().'product/edit/'.$s->id?>" role="button">Ubah</a>
+                        <!-- <a class="btn btn-warning" href="<?=base_url().'product/delete/'.$s->id?>" role="button" onclick="return confirm('Yakin hapus data?')">Hapus</a> -->
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

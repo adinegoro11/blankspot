@@ -21,18 +21,44 @@ class Product extends CI_Controller
     
     public function create()
     {
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('nama', 'Nama Barang', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis Barang', 'required');
+        $this->form_validation->set_rules('stok_minimal', 'Stok Minimal', 'required|integer');
         if ($this->form_validation->run() == false) {
-            $data['isi'] = 'suppliers/v_create';
+            $data['isi'] = 'products/v_create';
             $this->load->view('layouts/template', $data);
         } else {
-            $insert = array(
-                'nama' => $this->input->post('nama'),
-                'alamat' => $this->input->post('alamat'),
-            );
-            $this->supplier_model->insert($insert);
-            redirect('/supplier/index/');
+            $this->product_model->insert($this->input->post());
+            redirect('/product/index/', 'refresh');
         }
+    }
+
+    public function edit($id = '')
+    {
+        $id = $this->uri->segment(3);
+        $this->form_validation->set_rules('nama', 'Nama Barang', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis Barang', 'required');
+        $this->form_validation->set_rules('stok_minimal', 'Stok Minimal', 'required|integer');
+        if ($this->form_validation->run() == false) {
+            if (empty($id)) {
+                $id = $this->input->post('id');
+            }
+            $data['query'] = $this->product_model->detail($id);
+            $data['id'] = $id;
+            $data['isi'] = 'products/v_edit';
+            $this->load->view('layouts/template', $data);
+        } else {
+            $input = $this->input->post();
+            $this->product_model->update($input, $id);
+            redirect('product/index', 'refresh');
+        }
+    }
+
+    public function delete($id=null)
+    {
+        if (isset($id)) {
+            $this->product_model->delete($id);
+        }
+        redirect('product/index', 'refresh');
     }
 }
