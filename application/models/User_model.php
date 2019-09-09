@@ -16,12 +16,27 @@ class User_model extends CI_Model
         return $query->row();
     }
 
-    public function update_entry()
+    public function insert($data)
     {
-        $this->title    = $_POST['title'];
-        $this->content  = $_POST['content'];
-        $this->date     = time();
-
-        $this->db->update('entries', $this, array('id' => $_POST['id']));
+        $this->db->insert($this->table, $data);
     }
+
+    public function update($data, $id)
+    {
+        $this->db->update($this->table, $data, array('id' => $id));
+    }
+
+    public function detail($id = null)
+    {
+        $query = $this->db->get_where($this->table, array('id' => $id));
+        return $query->row();
+    }
+
+    public function get_template($data)
+    {
+        $this->db->where($data);
+        $query = $this->db->get('configuration');
+        return $query->row();
+    }
+
 }

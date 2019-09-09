@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2019 at 07:32 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Generation Time: Sep 09, 2019 at 05:07 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.2.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,7 +44,7 @@ CREATE TABLE `barang_keluar` (
 
 INSERT INTO `barang_keluar` (`id`, `judul`, `product_id`, `user_id`, `jumlah`, `keperluan`, `tanggal`) VALUES
 (1, 'barang keluar sore', 1, 3, 40, NULL, '2019-09-02'),
-(2, 'keperluan inventory', 1, 2, 10, NULL, '2019-09-02'),
+(2, 'keperluan inventory', 2, 1, 10, 'External', '2019-09-10'),
 (3, 'tang untuk gudang', 1, 2, 10, NULL, '2019-09-03'),
 (4, 'barang keluar #2', 4, 1, 10, 'External', '2019-09-04'),
 (5, 'satu', 2, 1, 12, 'Internal', '2019-09-04');
@@ -90,7 +90,9 @@ CREATE TABLE `configuration` (
 --
 
 INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
-(1, 'nama_pt', 'PT. Graha Sarana Duta');
+(1, 'nama_pt', 'PT. Graha Sarana Duta'),
+(2, 'judul', 'Ini adalah judul'),
+(3, 'kalimat_pengantar', 'Selamat datang di sistem inventory');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,7 @@ INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -112,6 +114,27 @@ INSERT INTO `customers` (`id`, `nama`, `alamat`) VALUES
 (1, 'PT. Satu Berkarya', 'Cilandak Jakarta Selatan'),
 (2, 'PT. Dua Warna', 'Bogor Utara'),
 (3, 'PT. Tiga Roda', 'Kuningan Jakarta Selatan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `product_id` int(10) DEFAULT NULL,
+  `user_id` int(10) DEFAULT NULL,
+  `jumlah` int(10) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `product_id`, `user_id`, `jumlah`, `tanggal`) VALUES
+(2, 2, 2, 11, '2019-09-01');
 
 -- --------------------------------------------------------
 
@@ -146,7 +169,7 @@ INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_sekarang`, `stok_masuk`, `s
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -180,7 +203,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `username`, `password`, `nik`, `level`) VALUES
 (1, 'Rudi Ismanto', 'petugas', 'afb91ef692fd08c445e8cb1bab2ccf9c', '1001', 'user'),
-(2, 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2001', 'admin');
+(2, 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2001', 'admin'),
+(3, 'Angga', 'angga', '8479c86c7afcb56631104f5ce5d6de62', '111', 'User');
 
 --
 -- Indexes for dumped tables
@@ -208,6 +232,12 @@ ALTER TABLE `configuration`
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -248,13 +278,19 @@ ALTER TABLE `barang_masuk`
 -- AUTO_INCREMENT for table `configuration`
 --
 ALTER TABLE `configuration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -272,7 +308,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

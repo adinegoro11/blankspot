@@ -49,7 +49,7 @@
         
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Beranda</a></li>
+            <li><a href="<?=base_url()?>user/home">Home</a></li>
             <li><a href="<?=base_url()?>product/index">Barang</a></li>
             <li><a href="<?=base_url()?>user/index">User</a></li>
             <li class="dropdown">
