@@ -57,7 +57,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>incoming_purchase/index">Barang Masuk</a></li>
                 <li><a href="<?=base_url()?>outgoing_purchase/index">Barang Keluar</a></li>
-                <li><a href="#">Permintaan Barang</a></li>
+                <li><a href="<?=base_url()?>order/index"">Permintaan Barang</a></li>
               </ul>
             </li>
             <li><a href="<?=base_url()?>login/logout" onclick="return confirm('Yakin keluar aplikasi?')">Keluar</a></li>
