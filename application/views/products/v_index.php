@@ -8,7 +8,9 @@
                 <tr>
                     <th>Nama Barang</th>
                     <th>Jenis</th>
-                    <th>Stok Saat Ini</th>
+                    <th>Jumlah Masuk</th>
+                    <th>Jumlah Keluar</th>
+                    <th>Stok</th>
                     <th>Stok Minimal</th>
                     <th>Aksi</th>
                 </tr>
@@ -17,7 +19,9 @@
                 <tr>
                     <th>Nama Barang</th>
                     <th>Jenis</th>
-                    <th>Stok Saat Ini</th>
+                    <th>Jumlah Masuk</th>
+                    <th>Jumlah Keluar</th>
+                    <th>Stok</th>
                     <th>Stok Minimal</th>
                     <th></th>
                 </tr>
@@ -25,12 +29,14 @@
             <tbody>
                 <?php foreach ($query as $s): ?>    
                 <tr>
-                    <td><?=$s->nama?></td>
-                    <td><?=$s->jenis?></td>
-                    <td>?</td>
-                    <td><?=$s->stok_minimal?></td>
+                    <td><?=$s['nama']?></td>
+                    <td><?=$s['jenis']?></td>
+                    <td><?=$s['total_masuk']?></td>
+                    <td><?=$s['total_keluar']?></td>
+                    <td><?=$s['stok']?></td>
+                    <td><?=$s['stok_minimal']?></td>
                     <td>
-                        <a class="btn btn-default" href="<?=base_url().'product/edit/'.$s->id?>" role="button">Ubah</a>
+                        <a class="btn btn-default" href="<?=base_url().'product/edit/'.$s['id']?>" role="button">Ubah</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -15,7 +15,7 @@ class Product extends CI_Controller
     public function index()
     {
         $data['isi'] = 'products/v_index';
-        $data['query'] = $this->product_model->get();
+        $data['query'] = $this->product_model->stock();
         $this->load->view('layouts/template', $data);
     }
     
