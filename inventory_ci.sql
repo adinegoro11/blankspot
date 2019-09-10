@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2019 at 05:07 PM
+-- Generation Time: Sep 11, 2019 at 01:32 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.16
 
@@ -71,7 +71,9 @@ INSERT INTO `barang_masuk` (`id`, `supplier_id`, `product_id`, `jumlah`, `tangga
 (2, 1, 1, 10000, '2019-09-03'),
 (4, 1, 1, 66, '2019-09-03'),
 (5, 3, 2, 90, '2019-09-19'),
-(6, 2, 1, 1200, '2019-09-02');
+(6, 2, 1, 1200, '2019-09-02'),
+(7, 3, 4, 100, '2019-09-10'),
+(8, 1, 5, 20, '2019-09-12');
 
 -- --------------------------------------------------------
 
@@ -146,8 +148,6 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `jenis` varchar(100) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `stok_sekarang` int(5) DEFAULT NULL,
-  `stok_masuk` int(5) DEFAULT NULL,
   `stok_minimal` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -155,10 +155,12 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_sekarang`, `stok_masuk`, `stok_minimal`) VALUES
-(1, 'TG001', 'Tang jepit', 10, 5, 10),
-(2, 'TG002', 'Tang potong', 40, 20, 10),
-(4, 'chemical', 'Pembersih lantai', NULL, NULL, 100);
+INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_minimal`) VALUES
+(1, 'TG001', 'Tang jepit', 10),
+(2, 'TG002', 'Tang potong', 10),
+(4, 'chemical', 'Pembersih lantai', 100),
+(5, 'peralatan', 'Rak sepatu', 20),
+(6, 'peralatan', 'Sikat WC', 20);
 
 -- --------------------------------------------------------
 
@@ -272,7 +274,7 @@ ALTER TABLE `barang_keluar`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `configuration`
@@ -296,7 +298,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
