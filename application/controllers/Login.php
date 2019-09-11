@@ -40,7 +40,7 @@ class Login extends CI_Controller
                 'logged_in' => true);
         
             $this->session->set_userdata($newdata);
-            redirect('/supplier/index/', 'refresh');
+            redirect('/user/home/', 'refresh');
         }
     }
 }

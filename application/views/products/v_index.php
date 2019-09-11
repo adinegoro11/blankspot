@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> <h3 class="panel-title">Data Barang</h3> </div>
+    <div class="panel-heading"> <h3 class="panel-title">Master Barang</h3> </div>
     <div class="panel-body">
         <a class="btn btn-success" href="<?= base_url()?>product/create" role="button">Tambah</a>
         <hr>

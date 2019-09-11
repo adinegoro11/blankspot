@@ -70,4 +70,15 @@ class Incoming_purchase extends CI_Controller
             redirect('incoming_purchase/index', 'refresh');
         }
     }
+
+    public function export($awal, $akhir)
+    {
+        $parameter = array('start_date' => $awal, 'end_date' => $akhir);
+        $data['query'] = $this->incoming_purchase_model->laporan($parameter);
+        $html = $this->load->view('incoming_purchases/v_export', $data, true);
+        $this->load->library('pdf');
+        $this->pdf->load_html($html);
+        $this->pdf->render();
+        $this->pdf->stream('tess', array("Attachment" => 0));
+    }
 }
