@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2019 at 01:32 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.2.16
+-- Generation Time: Sep 15, 2019 at 11:56 AM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -105,7 +105,7 @@ INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -171,7 +171,7 @@ INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_minimal`) VALUES
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

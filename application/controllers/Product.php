@@ -61,4 +61,28 @@ class Product extends CI_Controller
         }
         redirect('product/index', 'refresh');
     }
+
+    public function laporan()
+    {
+        $this->form_validation->set_rules('start_date', 'Tanggal Awal', 'required');
+        $this->form_validation->set_rules('end_date', 'Tanggal Akhir', 'required');
+        if ($this->form_validation->run() == false) {
+            $data['isi'] = 'products/v_laporan';
+            $this->load->view('layouts/template', $data);
+        } else {
+
+            $parameter = array(
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date'),
+            );
+
+            $data['query_masuk'] = $this->incoming_purchase_model->laporan($parameter);
+            $data['query_keluar'] = $this->outgoing_purchase_model->laporan($parameter);
+            $data['isi'] = 'products/v_laporan';
+            $data['hasil'] = 1;
+            $data['start_date'] = $this->input->post('start_date');
+            $data['end_date'] = $this->input->post('end_date');
+            $this->load->view('layouts/template', $data);
+        }
+    }
 }

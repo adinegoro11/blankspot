@@ -9,6 +9,7 @@ class Outgoing_purchase_model extends CI_Model
         $this->db->from($this->table);
         $this->db->join('users u', 'u.id = barang_keluar.user_id');
         $this->db->join('products p', 'p.id = barang_keluar.product_id');
+        $this->db->order_by('barang_keluar.tanggal', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -32,5 +33,18 @@ class Outgoing_purchase_model extends CI_Model
     {
         $query = $this->db->get_where($this->table, array('id' => $id));
         return $query->row();
+    }
+
+    public function laporan($data)
+    {
+        $this->db->select('(barang_keluar.id)AS id, nama_lengkap, (p.nama) AS barang, jumlah, tanggal, judul, keperluan');
+        $this->db->from($this->table);
+        $this->db->join('users u', 'u.id = barang_keluar.user_id');
+        $this->db->join('products p', 'p.id = barang_keluar.product_id');
+        $this->db->where('tanggal >=', $data['start_date']);
+        $this->db->where('tanggal <=', $data['end_date']);
+        $this->db->order_by('barang_keluar.tanggal', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
     }
 }
