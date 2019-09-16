@@ -1,7 +1,9 @@
 <div class="panel panel-primary">
     <div class="panel-heading"> <h3 class="panel-title">Master Barang</h3> </div>
     <div class="panel-body">
+        <?php if ($this->session->userdata('level')=='admin'): ?>
         <a class="btn btn-success" href="<?= base_url()?>product/create" role="button">Tambah</a>
+        <?php endif; ?>
         <hr>
         <table class="table table-striped" id="data">
             <thead>
@@ -12,7 +14,9 @@
                     <th>Jumlah Keluar</th>
                     <th>Stok</th>
                     <th>Stok Minimal</th>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <th>Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tfoot>
@@ -23,7 +27,9 @@
                     <th>Jumlah Keluar</th>
                     <th>Stok</th>
                     <th>Stok Minimal</th>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <th></th>
+                    <?php endif; ?>
                 </tr>
             </tfoot>
             <tbody>
@@ -35,9 +41,11 @@
                     <td><?=$s['total_keluar']?></td>
                     <td><?=$s['stok']?></td>
                     <td><?=$s['stok_minimal']?></td>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <td>
                         <a class="btn btn-default" href="<?=base_url().'product/edit/'.$s['id']?>" role="button">Ubah</a>
                     </td>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -1,7 +1,9 @@
 <div class="panel panel-primary">
     <div class="panel-heading"> <h3 class="panel-title">Data User</h3> </div>
     <div class="panel-body">
+        <?php if ($this->session->userdata('level')=='admin'): ?>
         <a class="btn btn-success" href="<?= base_url()?>user/create" role="button">Tambah</a>
+        <?php endif; ?>
         <hr>
         <table class="table table-striped" id="data">
             <thead>
@@ -10,7 +12,9 @@
                     <th>Username</th>
                     <th>NIK</th>
                     <th>Level</th>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <th>Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tfoot>
@@ -19,7 +23,9 @@
                     <th>Username</th>
                     <th>NIK</th>
                     <th>Level</th>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <th></th>
+                    <?php endif; ?>
                 </tr>
             </tfoot>
             <tbody>
@@ -29,9 +35,11 @@
                     <td><?=$s->username?></td>
                     <td><?=$s->nik?></td>
                     <td><?=$s->level?></td>
+                    <?php if ($this->session->userdata('level')=='admin'): ?>
                     <td>
                         <a class="btn btn-default" href="<?=base_url().'user/edit/'.$s->id?>" role="button">Ubah</a>
                     </td>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

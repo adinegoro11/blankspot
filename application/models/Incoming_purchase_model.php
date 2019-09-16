@@ -9,7 +9,7 @@ class Incoming_purchase_model extends CI_Model
         $this->db->from($this->table);
         $this->db->join('suppliers s', 's.id = barang_masuk.supplier_id');
         $this->db->join('products p', 'p.id = barang_masuk.product_id');
-        $this->db->order_by('barang_masuk.tanggal', 'ASC');
+        $this->db->order_by('barang_masuk.tanggal', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
