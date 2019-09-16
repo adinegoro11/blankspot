@@ -42,6 +42,18 @@
             </div>
 
             <div class="form-group">
+                <label for="keperluan" class="col-sm-2 control-label">Keperluan</label>
+                <div class="col-sm-5">
+                    <label class="radio-inline">
+                        <input type="radio" name="keperluan" value="Internal"> Internal
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="keperluan" value="External"> External
+                    </label>
+                </div> <?=form_error('keperluan')?>
+            </div>
+
+            <div class="form-group">
                 <label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
                 <div class="col-sm-5">
                     <input type="date" class="form-control" name="tanggal" required="required" placeholder="Tanggal" autocomplete="off">

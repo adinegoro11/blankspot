@@ -5,7 +5,7 @@ class Order_model extends CI_Model
 
     public function get()
     {
-        $this->db->select('(orders.id)AS id, (u.nama_lengkap) AS nama, (p.nama) AS barang, (orders.jumlah) AS jumlah,(orders.tanggal) AS tanggal');
+        $this->db->select('(orders.id)AS id, (u.nama_lengkap) AS nama, (p.nama) AS barang, (orders.jumlah) AS jumlah,(orders.tanggal) AS tanggal, keperluan');
         $this->db->from($this->table);
         $this->db->join('users u', 'u.id = orders.user_id');
         $this->db->join('products p', 'p.id = orders.product_id');

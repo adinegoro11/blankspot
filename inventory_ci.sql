@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2019 at 11:56 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Generation Time: Sep 17, 2019 at 12:52 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.2.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,7 +73,8 @@ INSERT INTO `barang_masuk` (`id`, `supplier_id`, `product_id`, `jumlah`, `tangga
 (5, 3, 2, 90, '2019-09-19'),
 (6, 2, 1, 1200, '2019-09-02'),
 (7, 3, 4, 100, '2019-09-10'),
-(8, 1, 5, 20, '2019-09-12');
+(8, 1, 5, 20, '2019-09-12'),
+(9, 3, 2, 15, '2019-09-25');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,7 @@ INSERT INTO `barang_masuk` (`id`, `supplier_id`, `product_id`, `jumlah`, `tangga
 CREATE TABLE `configuration` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `value` varchar(100) DEFAULT NULL
+  `value` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -93,8 +94,8 @@ CREATE TABLE `configuration` (
 
 INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
 (1, 'nama_pt', 'PT. Graha Sarana Duta'),
-(2, 'judul', 'Ini adalah judul'),
-(3, 'kalimat_pengantar', 'Selamat datang di sistem inventory');
+(2, 'judul', 'PT. Graha Sarana Duta'),
+(3, 'kalimat_pengantar', '<p>\r\nPT. Graha Sarana Duta didirikan pada tahun 1981, untuk meyediakan office building, jasa pemeliharaan dan perawatan gedung Bank Duta. Pada tahun 2001 kepemilikan perseroan diambil alih sepenuhnya oleh PT Telekomunikasi Indonesia, Tbk untuk mengelola gedung-gedung kantor dan aset properti Telkom yang sebelumnya dikelola oleh divisi properti Telkom. Di bawah kendali Telkom, PT. Graha Sarana Duta terus berkembang menjadi perusahaan properti yang terpadu dengan branding yaitu TelkomProperty.\r\n</p>\r\n<h3>Visi</h3>\r\n<p>Untuk menjadi manajemen properti yang terkemuka dan pengembang jasa di Indonesia dengan menyediakan berbagai 6 komprehensif pembangunan dan layanan untuk membantu pelanggan kami memaksimalkan bisnis mereka.</p>\r\n<h3>Misi</h3>\r\n<ol>\r\n<li>Memberikan Telkom Property properti dan fasilitas secara lengkap disertai dengan kualitas terbaik dan harga yang kompetitif.</li>\r\n<li>Memberikan Telkom Property fasilitas yang inovatif yang berwawaasan lingkungan.</li>\r\n<li>Menjadi korporasi dengan pengelolaan terbaik</li>\r\n</ol>');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ INSERT INTO `configuration` (`id`, `nama`, `value`) VALUES
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -128,6 +129,7 @@ CREATE TABLE `orders` (
   `product_id` int(10) DEFAULT NULL,
   `user_id` int(10) DEFAULT NULL,
   `jumlah` int(10) DEFAULT NULL,
+  `keperluan` varchar(100) DEFAULT NULL,
   `tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -135,8 +137,9 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `product_id`, `user_id`, `jumlah`, `tanggal`) VALUES
-(2, 2, 2, 11, '2019-09-01');
+INSERT INTO `orders` (`id`, `product_id`, `user_id`, `jumlah`, `keperluan`, `tanggal`) VALUES
+(2, 2, 2, 11, NULL, '2019-09-01'),
+(3, 6, 3, 2, 'External', '2019-09-09');
 
 -- --------------------------------------------------------
 
@@ -171,7 +174,7 @@ INSERT INTO `products` (`id`, `jenis`, `nama`, `stok_minimal`) VALUES
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -274,7 +277,7 @@ ALTER TABLE `barang_keluar`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `configuration`
@@ -292,7 +295,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`

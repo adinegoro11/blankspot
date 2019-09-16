@@ -11,6 +11,7 @@
                     <th>Nama Barang</th>
                     <th>Diajukan oleh</th>
                     <th>Qty</th>
+                    <th>Keperluan</th>
                     <th>Tanggal</th>
                     <?php if ($this->session->userdata('level') != 'admin'): ?>
                     <th>Aksi</th>
@@ -22,6 +23,7 @@
                     <th>Nama Barang</th>
                     <th>Diajukan oleh</th>
                     <th>Qty</th>
+                    <th>Keperluan</th>
                     <th>Tanggal</th>
                     <?php if ($this->session->userdata('level') != 'admin'): ?>
                     <th></th>
@@ -34,6 +36,7 @@
                     <td><?=$s->barang?></td>
                     <td><?=$s->nama?></td>
                     <td><?=$s->jumlah?></td>
+                    <td><?=$s->keperluan?></td>
                     <td><?=date('d F Y', strtotime($s->tanggal))?></td>
                     <?php if ($this->session->userdata('level') != 'admin'): ?>
                     <td>
