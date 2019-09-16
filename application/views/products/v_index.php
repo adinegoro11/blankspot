@@ -33,8 +33,10 @@
                 </tr>
             </tfoot>
             <tbody>
-                <?php foreach ($query as $s): ?>    
-                <tr>
+                <?php
+                    foreach ($query as $s) {
+                        $s['stok'] < $s['stok_minimal'] ? $class = 'class="danger"' : $class = null; ?>    
+                <tr <?=$class?>>
                     <td><?=$s['nama']?></td>
                     <td><?=$s['jenis']?></td>
                     <td><?=$s['total_masuk']?></td>
@@ -47,7 +49,8 @@
                     </td>
                     <?php endif; ?>
                 </tr>
-                <?php endforeach; ?>
+                <?php
+                    }?>
             </tbody>
 
           </table>
