@@ -5,18 +5,10 @@
         <form class="form-horizontal" action="<?= base_url().'order/edit/'.$id?>" method="post">
             
             <div class="form-group">
-                <label for="product_id" class="col-sm-2 control-label">Barang</label>
+                <label for="product_name" class="col-sm-2 control-label">Nama Barang</label>
                 <div class="col-sm-5">
-                    <select class="form-control js-example-basic-single" name="product_id" required="required">
-                        <option value="">-- Pilih Barang --</option>
-                        <?php 
-                        foreach ($dropdown_product as $s){
-                            $s->id == $query->product_id ? $selected = 'selected' : $selected = null;
-                            echo "<option value=".$s->id." ".$selected.">".$s->nama."</option>";
-                        }  
-                        ?>
-                    </select>
-                </div> <?=form_error('product_id')?>
+                    <input type="text" class="form-control" name="product_name" value="<?=$query->product_name?>" required="required" placeholder="Nama Barang" autocomplete="off">
+                </div> <?=form_error('product_name')?>
             </div>
 
             <div class="form-group">

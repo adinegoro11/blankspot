@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2019 at 12:52 AM
+-- Generation Time: Sep 17, 2019 at 04:34 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.2.16
 
@@ -126,7 +126,7 @@ INSERT INTO `customers` (`id`, `nama`, `alamat`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `product_id` int(10) DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
   `user_id` int(10) DEFAULT NULL,
   `jumlah` int(10) DEFAULT NULL,
   `keperluan` varchar(100) DEFAULT NULL,
@@ -137,9 +137,12 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `product_id`, `user_id`, `jumlah`, `keperluan`, `tanggal`) VALUES
-(2, 2, 2, 11, NULL, '2019-09-01'),
-(3, 6, 3, 2, 'External', '2019-09-09');
+INSERT INTO `orders` (`id`, `product_name`, `user_id`, `jumlah`, `keperluan`, `tanggal`) VALUES
+(2, 'Kantong semen', 2, 11, 'External', '2019-09-10'),
+(3, 'Celengan ayam', 3, 2, 'Internal', '2019-09-04'),
+(4, 'Wadah Tisu', 2, 12, 'External', '2019-09-04'),
+(5, 'Pewangi ruangan', 1, 10, 'External', '2019-09-01'),
+(6, 'Gelas biru', 3, 100, 'Internal', '2019-09-04');
 
 -- --------------------------------------------------------
 
@@ -295,7 +298,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`

@@ -21,12 +21,12 @@ class Order extends CI_Controller
     
     public function create()
     {
-        $this->form_validation->set_rules('product_id', 'Barang', 'required');
+        $this->form_validation->set_rules('product_name', 'Nama Barang', 'required');
         $this->form_validation->set_rules('user_id', 'Diajukan oleh', 'required');
         $this->form_validation->set_rules('jumlah', 'Qty', 'required|integer');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
+        $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
         if ($this->form_validation->run() == false) {
-            $data['dropdown_product'] = $this->product_model->get();
             $data['dropdown_user'] = $this->user_model->get();
             $data['isi'] = 'orders/v_create';
             $this->load->view('layouts/template', $data);
@@ -39,7 +39,7 @@ class Order extends CI_Controller
     public function edit($id = '')
     {
         $id = $this->uri->segment(3);
-        $this->form_validation->set_rules('product_id', 'Barang', 'required');
+        $this->form_validation->set_rules('product_name', 'Nama Barang', 'required');
         $this->form_validation->set_rules('user_id', 'Diajukan oleh', 'required');
         $this->form_validation->set_rules('jumlah', 'Qty', 'required|integer');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
@@ -47,7 +47,6 @@ class Order extends CI_Controller
             if (empty($id)) {
                 $id = $this->input->post('id');
             }
-            $data['dropdown_product'] = $this->product_model->get();
             $data['dropdown_user'] = $this->user_model->get();
             $data['query'] = $this->order_model->detail($id);
             $data['id'] = $id;

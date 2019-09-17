@@ -33,7 +33,7 @@
             <tbody>
                 <?php foreach ($query as $s): ?>    
                 <tr>                  
-                    <td><?=$s->barang?></td>
+                    <td><?=$s->product_name?></td>
                     <td><?=$s->nama?></td>
                     <td><?=$s->jumlah?></td>
                     <td><?=$s->keperluan?></td>
